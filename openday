@@ -1,0 +1,23 @@
+#! /usr/bin/env python3
+
+import sys
+import datetime as dt
+import os
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: openday {hours}")
+        sys.exit(1)
+    hours = int(sys.argv[1])
+    if hours < 0 or hours > 6:
+        raise ValueError("hours must be between 0 and 6")
+    now = dt.datetime.now()
+    print("Current time ",  now.strftime("%H:%M"))
+    end = now + dt.timedelta(hours=hours)
+    print("Closing space",  end.strftime("%H:%M"))
+    with open("/tmp/open-day.tmp", "wt") as f:
+        f.write("%d\n" % hours)
+    os.rename("/tmp/open-day.tmp", "/tmp/open-day")
+
+if __name__ == "__main__":
+    main()

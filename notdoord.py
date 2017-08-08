@@ -6,7 +6,7 @@ import sys
 import crc16
 import serial
 import time
-import optparse
+import argparse
 import os
 
 def dbg(msg):
@@ -212,8 +212,12 @@ class SimpleDoor():
 
 
 def main():
-    d = SimpleDoor(sys.argv[1])
-    d.load_keys("cards.dat")
+    parser = argparse.ArgumentParser(description='Simple hackspace door daemon')
+    parser.add_argument('--device', required=True, help='The serial device for the Arduino e.g. /dev/ttyUSB0')
+    parser.add_argument('--cardsPath', required=True, help='Path to the cards.dat file')
+    args = parser.parse_args()
+    d = SimpleDoor(args.device)
+    d.load_keys(args.cardsPath)
     d.run()
 
 if __name__ == "__main__":

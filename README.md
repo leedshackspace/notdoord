@@ -14,11 +14,11 @@ The door Arduino is visible as a serial device as `/dev/ttyUSBX`, where X is a n
 
 ## Usage
 
-`$ ./notdoord.py <serialDevice>`
+`$ ./notdoord.py --device <serialDevice> --cardsPath <pathToCardsFile>`
 
 e.g.
 
-`$ ./notdoord.py /dev/ttyUSB?`
+`$ ./notdoord.py --device /dev/ttyUSB0 --cardsPath cards.dat`
 
 This will run the daemon in the foreground.
 

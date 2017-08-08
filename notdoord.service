@@ -1,0 +1,16 @@
+# /etc/systemd/system/notdoord.service
+[Unit]
+Description=notdoord - temporary doord replacement
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/notdoord
+# run Python with -u for unbuffered output, otherwise the logs won't appear in journalctl
+ExecStart=/usr/bin/python3 -u notdoord.py /dev/ttyUSB0
+Restart=always
+RestartSec=1
+User=notdoord
+Group=notdoord
+
+[Install]
+WantedBy=multi-user.target

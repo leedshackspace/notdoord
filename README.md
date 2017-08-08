@@ -22,4 +22,12 @@ e.g.
 
 This will run the daemon in the foreground.
 
-If running as the `hackspace` user, the `runme.sh` script can be used to run the daemon on a loop in case it crashes.
+## Running as a service
+
+An example systemd service unit file is included in `notdoord.service`. It can be set up follows:
+
+1. Copy `notdoord.service` to /etc/systemd/system/notdoord.service
+2. Enable autostart on boot with `sudo systemctl enable notdoord.service`
+3. Start the service with `sudo systemctl start notdoord.service`
+
+Service output can be viewed by running `sudo journalctl -fu notdoord.service`

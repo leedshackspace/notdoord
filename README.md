@@ -1,3 +1,6 @@
+# ARCHIVED
+This project has been archived by Callum Snowden, as we've now replaced our door controls with a Paxton installation and thus this repository is no longer used or maintained.
+
 # notdoord
 
 A hacky daemon to interface with the door Arduino, allowing access to members based on member card data stored in a simple file format.
